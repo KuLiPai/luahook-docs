@@ -4,7 +4,7 @@
 
 nirenr的luaj改版，增加对java更好的支持，以下内容来自NeLuaj提供的Luaj++参考手册，希望对您了解luaj++有帮助
 
-### 入口文件
+## 入口文件
 
 Activity main.lua
 
@@ -18,7 +18,7 @@ WallpaperService wallpaper.lua
 
 服务可以使用setLuaDir(dir)设置运行目录，setEnabled(context)打开启动服务设置界面，getInstance()获取服务实例。
 
-#### ** 可省略非必要关键字 **
+## 可省略非必要关键字
 
 - 省略then
 
@@ -117,7 +117,7 @@ for n = 1,10
 end
 ```
 
-#### ** 支持foreach**
+## 支持foreach
 
 ```lua
 for k,v : t
@@ -128,26 +128,26 @@ end
 
 ```
 
-#### ** 支持defer **
+## 支持defer
 
 defer后语句将在函数结束时运行
 多个defer将按照后入先出原则运行。
 
-#### ** 支持?操作符 **
+## 支持?操作符
 
 ```lua
 ?a print(1)`print(2)
 a = ?a print(1)`print(2)
 ```
 
-#### ** 支持三目 if **
+## 支持三目 if
 
 ```lua
 b = if a 1 else 2
 print(b)
 ```
 
-#### ** 支持try-catch-finally **
+## 支持try-catch-finally
 
 ```lua
 try
@@ -171,7 +171,7 @@ lambda a,b:print(a+b)
 lambda () -> print("lambda")
 ```
 
-#### ** 支持import **
+## 支持import
 
 import 将导入包并设置为局部变量
 
@@ -208,7 +208,7 @@ local:print
 || 可代替 or
 ```
 
-#### ** 支持位运算 **
+## 支持位运算
 
 - 按位与
   a=1&2
@@ -223,7 +223,7 @@ local:print
 - 按位非
   a=~2
 
-#### ** 支持64位整数 **
+## 支持64位整数
 
 ```lua
 i=0xffffffffff
@@ -238,7 +238,7 @@ a*=1
 a/=1
 ```
 
-#### ** 调用java优化 **
+## 调用java优化
 
 - javaClass 拓展函数/属性
 

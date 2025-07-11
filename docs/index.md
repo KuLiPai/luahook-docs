@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: LuaHook
-  text: Write Xposed via Lua
-  tagline: Anyone can hook
+  text: 通过 Lua 编写 Xposed 模块
+  tagline: 任何人都能 Hook
   image:
     src: /logo.png
     alt: LuaHook
@@ -17,20 +17,20 @@ hero:
       </div>
   actions:
     - theme: brand
-      text: Get Started
+      text: 快速开始
       link: /quickstart
     - theme: alt
-      text: View on GitHub
+      text: 在 GitHub 查看
       link: https://github.com/kulipai/luahook
 
 features:
   - icon: 🚀
-    title: Lightning Fast
-    details: Load and run Lua scripts instantly without recompiling or reinstalling the app.
+    title: 极速运行
+    details: 无需重新编译或重新安装应用，即可立即加载并运行 Lua 脚本。
   - icon: 🔧
-    title: Lua-Powered Simplicity
-    details: Write powerful Xposed modules using clean, flexible, and beginner-friendly Lua scripts.
+    title: Lua 驱动的简洁性
+    details: 使用简洁、灵活且对初学者友好的 Lua 脚本编写强大的 Xposed 模块。
   - icon: 💪
-    title: Real-Time + Persistent
-    details: Combines real-time scripting and persistent hooking for a seamless development experience.
+    title: 实时 + 持久化
+    details: 结合了实时脚本和持久化 Hook，提供无缝的开发体验。
 ---
