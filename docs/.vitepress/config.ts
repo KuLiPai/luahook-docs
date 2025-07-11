@@ -48,6 +48,14 @@ export default defineConfig({
             ],
           },
           {
+            text: '例子',
+            items: [
+              { text: '监听音量按键', link: '/example/monitor-volume-buttons' },
+              { text: '注入SO文件', link: '/example/inject-so-file' },
+              { text: '编写脚本设置页面', link: '/example/write-setting' },
+            ],
+          },
+          {
             text: '关于',
             items: [
               { text: 'LuaHook团队', link: '/about/author-profile' },
