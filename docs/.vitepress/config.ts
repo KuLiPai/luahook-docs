@@ -9,7 +9,7 @@ export default defineConfig({
   ],
 
 
-   locales: {
+  locales: {
     // 默认语言：简体中文
     root: {
       label: '简体中文',
@@ -18,14 +18,14 @@ export default defineConfig({
       title: 'LuaHook',
       description: 'LuaHook 官网',
       themeConfig: {
-        logo: '/logo.png', 
+        logo: '/logo.png',
         nav: [
           { text: '下载', link: 'https://github.com/KuLiPai/LuaHook/releases/latest' }
         ],
         sidebar: [
           {
             items: [
-              {text: '快速开始', link: '/quickstart' },
+              { text: '快速开始', link: '/quickstart' },
             ],
           },
           {
@@ -49,7 +49,9 @@ export default defineConfig({
           },
           {
             text: '关于',
-            items: [], 
+            items: [
+              { text: 'LuaHook团队', link: '/about/author-profile' },
+            ],
           },
         ],
         socialLinks: [
@@ -69,14 +71,14 @@ export default defineConfig({
       title: 'LuaHook',
       description: 'LuaHook Website',
       themeConfig: {
-        logo: '/logo.png', 
+        logo: '/logo.png',
         nav: [
           { text: 'Download', link: 'https://github.com/KuLiPai/LuaHook/releases/latest' }
         ],
         sidebar: [
           {
             items: [
-              {text: 'Quick Start', link: '/en/quickstart' }, 
+              { text: 'Quick Start', link: '/en/quickstart' },
             ],
           },
           {
@@ -103,16 +105,16 @@ export default defineConfig({
             items: [],
           },
         ],
-        socialLinks: [ 
+        socialLinks: [
           { icon: 'github', link: 'https://github.com/kulipai/luahook' },
           { icon: 'telegram', link: 'https://t.me/luaXposed' },
         ],
-        footer: { 
+        footer: {
           message: 'Made with ❤️',
           copyright: 'Copyright © 2025-present <a href="https://github.com/KuLiPai">KuLiPai</a>'
         }
       }
     }
-  },  
+  },
 
- });
+});

@@ -6,17 +6,17 @@ nirenr的luaj改版，增加对java更好的支持，以下内容来自NeLuaj提
 
 ## 入口文件
 
-Activity main.lua
+`Activity` main.lua
 
-Service service.lua
+`Service` service.lua
 
-AccessibilityService accessibility.lua
+`AccessibilityService` accessibility.lua
 
-NotificationListenerService notification.lua
+`NotificationListenerService` notification.lua
 
-WallpaperService wallpaper.lua
+`WallpaperService` wallpaper.lua
 
-服务可以使用setLuaDir(dir)设置运行目录，setEnabled(context)打开启动服务设置界面，getInstance()获取服务实例。
+服务可以使用`setLuaDir(dir)`设置运行目录，`setEnabled(context)`打开启动服务设置界面，`getInstance()`获取服务实例。
 
 ## 可省略非必要关键字
 
@@ -173,33 +173,36 @@ lambda () -> print("lambda")
 
 ## 支持import
 
-import 将导入包并设置为局部变量
+```lua
+import "package"
+--将导入包并设置为局部变量
 
 import "java.lang.String"
-返回值为 javaClass
+--返回值为 javaClass
 
 import "java.lang.*"
-返回值为 javaPackage
+--返回值为 javaPackage
 
 import str "java.lang.String"
-设置别名
+--设置别名
 
 import "java.lang. *", "java.io.* "
-一次性导入多个包或类
+--一次性导入多个包或类
+```
 
-** 支持module **
+**支持module**
 
 module自带环境，默认设置环境表的metatable为自己
 
 module "name"
 
-** 支持自赋值local **
+**支持自赋值local**
 
 local:print
 
 将全局print设置为局部print
 
-** 运算符优化 **
+**运算符优化**
 
 ```lua
 != 可代替 ~=
@@ -229,7 +232,7 @@ local:print
 i=0xffffffffff
 ```
 
-** 支持+= -= *= /= %= ^= //= &= |= ~= <<= >>= ..=运算 **
+**支持`+= -= *= /= %= ^= //= &= |= ~= <<= >>= ..=`运算**
 
 ```lua
 a+=1
