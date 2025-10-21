@@ -22,7 +22,38 @@ git clone -b simplify https://github.com/KuLiPai/LuaHook.git
 
 在上图红色方块中写入lua代码，并保存
 
-## 4.编译和打包
+
+## 4.修过应用信息
+
+在`app/build.gradle.kts`里修改如下内容
+
+`applicationId`包名
+
+`versionCode`版本号
+
+`versionName`版本名
+
+![image](/assets/image-20251021182309-gqowjb1.png)
+
+> 请不要修改`namespace = "com.kulipai.luahook"`会导致hook失效
+
+如果你的lua代码使用`宿主资源注入扩展`，为防止资源 ID 互相冲突，你需要修改资源 ID。（`app/build.gradle.kts`第54-56行左右）
+
+![image](/assets/image-20251021182739-jsoxi1f.png)
+
+> 注意
+>
+> 提供的示例资源 ID 值仅供参考，不可使用 **0x7f**，默认为 **0x64**，为了防止当前宿主存在多个 Xposed 模块，建议自定义你自己的资源 ID。
+
+修改app名称和图标
+
+在`app\src\main\AndroidManifest.xml`里修改
+
+![image](/assets/image-20251021184008-erbqjlt.png)
+
+可以直接将`@string/app_name`改成app名字符串
+
+## 5.编译和打包
 
 使用 **Gradle** 或 IDE 的编译功能来构建程序，生成最终的 APK 安装包
 
