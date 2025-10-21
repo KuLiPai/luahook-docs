@@ -34,6 +34,7 @@ link: '/',
               { text: '简介', link: '/introduction' },
               { text: '安装与激活', link: '/activate' },
               { text: '第一个脚本', link: '/firstscript' },
+              { text: '打包', link: '/packaged' }
             ],
           },
           {
