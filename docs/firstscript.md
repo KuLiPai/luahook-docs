@@ -44,15 +44,17 @@
 ```lua
 imports "android.widget.Toast"
 
-hook("android.app.Activity",
-  lpparam.classLoader,
-  "onCreate",
-  "android.os.Bundle",
-  function(it) end,
-  function(it)
-    Toast.makeText(it.thisObject, "LuaHook", 1000).show()
-  end
-)
+hook {
+    class = "android.app.Activity",
+    method = "onCreate",
+    params = {"android.os.Bundle"},
+    before = function(it) 
+
+    end,
+    after = function(it)
+        Toast.makeText(it.thisObject, "Hello LuaHook!", Toast.LENGTH_SHORT).show()
+    end
+}
 ```
 
 ---

@@ -1,8 +1,8 @@
 # 编写脚本设置页面
 
-## 1. `@set` 注解的作用
+## 1. `::set::` 注解的作用
 
-`@set` 是一个特殊的注解，用于标识脚本文件定义了一个可作为独立界面的 **设置页面**。在 LuaHook 运行时环境中，该注解帮助脚本引擎识别并正确加载和处理这些设置页面脚本。
+`::set::` 是一个特殊的注解，用于标识脚本文件定义了一个可作为独立界面的 **设置页面**。在 LuaHook 运行时环境中，该注解帮助脚本引擎识别并正确加载和处理这些设置页面脚本。
 
 -----
 
@@ -11,7 +11,7 @@
 以下是一个典型的 Lua 设置页面脚本结构，它展示了一个包含文本视图和按钮的基础界面：
 
 ```lua
-@set
+::set::
 function setActivity()
 	-- 导入必要的 Java 类，用于 UI 组件和功能
 	import "com.kulipai.luahook.util.*"
@@ -126,7 +126,7 @@ injectActivity(currentActivity, "print('Hello from injected Activity')")
 
 ### 4.3 宿主页面调用示例
 
-以下示例展示了如何在宿主应用的 Lua 脚本中调用 **封装的 `startScriptActivity` 函数** 来跳转到设置页面，并传递一个字符串参数。如果你选择直接使用 `injectActivity`，逻辑会类似，但需要将整个 `@set` 定义的 Lua 代码作为字符串传入。
+以下示例展示了如何在宿主应用的 Lua 脚本中调用 **封装的 `startScriptActivity` 函数** 来跳转到设置页面，并传递一个字符串参数。如果你选择直接使用 `injectActivity`，逻辑会类似，但需要将整个 `::set::` 定义的 Lua 代码作为字符串传入。
 
 ```lua
 hookcotr(
@@ -144,9 +144,9 @@ hookcotr(
 			-- 调用封装的函数，跳转到名为 "当前脚本名称" 的设置页面，并传递参数 "你好"
 			startScriptActivity(context, "当前脚本名称", "你好")
 
-			-- 如果使用 injectActivity，大致会是这样（需要将 @set 函数转换为字符串）：
+			-- 如果使用 injectActivity，大致会是这样（需要将 ::set:: 函数转换为字符串）：
 			-- local luaCode = [[
-			-- @set
+			-- ::set::
 			-- function setActivity()
 			--    -- ... 你的设置页面代码 ...
 			-- end
@@ -159,10 +159,10 @@ hookcotr(
 
 ### 4.4 设置页面接收参数示例
 
-在 `@set` 定义的设置页面脚本中，无论你是通过 `startScriptActivity` 还是 `injectActivity` 跳转过来，都可以通过 `this.getIntent().getExtras()` 方法来获取传递过来的参数：
+在 `::set::` 定义的设置页面脚本中，无论你是通过 `startScriptActivity` 还是 `injectActivity` 跳转过来，都可以通过 `this.getIntent().getExtras()` 方法来获取传递过来的参数：
 
 ```lua
-@set
+::set::
 function setActivity()
 	import "com.kulipai.luahook.util.*"
 	import "java.lang.*"
@@ -218,7 +218,7 @@ end
 
 目前，页面跳转和参数传递主要依赖于 `ScriptSetActivity` 作为统一入口，并通过 `Intent.putExtra` 来实现。未来计划将支持更灵活的跳转方式和参数传递机制，包括：
 
-  * **通过 `@set` 传递 Lua 函数**: 允许直接传递 Lua 函数引用，实现更高级的回调和交互。
+  * **通过 `::set::` 传递 Lua 函数**: 允许直接传递 Lua 函数引用，实现更高级的回调和交互。
   * **通过 Lua 文件路径传递**: 简化大型 Lua 脚本的组织和加载，避免长字符串。
 
 这些改进将进一步提升 LuaHook 在开发自定义设置页面方面的便利性和强大功能。

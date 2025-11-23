@@ -66,6 +66,7 @@ link: '/',
             items: [
               { text: '关于', link: '/about/about' },
               { text: '常见问题', link: '/about/problem' },
+              { text: '源码导读', link: '/about/development' },
               { text: '致谢', link: '/about/thanks' },
               { text: 'Q&A', link: '/about/qna' },
               { text: '联系方式', link: '/about/contact' },
