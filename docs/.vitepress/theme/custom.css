@@ -1,44 +1,67 @@
-
-:root {
-  --vp-c-brand: #646cff;
-  --vp-c-brand-light: #747bff;
-  --vp-c-brand-lighter: #9499ff;
-  --vp-c-brand-dark: #535bf2;
-  --vp-c-brand-darker: #454ce1;
-  --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
-  /* 可选保留 --vp-c-bg，实际不再使用 */
-}
-
+/* --- 1. 重置 Body，确保不影响其他页面 --- */
 body {
-  background: unset;
-  background-color: unset;
-  background-attachment: unset;
+  background: unset !important;
+  background-color: var(--vp-c-bg) !important;
+  background-attachment: unset !important;
 }
 
+/* --- 2. 这里的 CSS 变量保持原样或根据需要微调 --- */
+:root {
+  --vp-c-brand: #74b9ff;
+  --vp-c-brand-light: #74b9ff;
+  --vp-c-brand-lighter: #9fd3ff;
+  --vp-c-brand-dark: #5aa0e8;
+  --vp-c-brand-darker: #4a90d8;
+  --vp-c-brand-dimm: rgba(116, 185, 255, 0.08);
+}
 
+/* --- 3. Hero 区域背景设置 --- */
 .VPHero {
   position: relative;
-  overflow: hidden;
+  /* 允许背景溢出一点点，防止边缘太硬，但通常不需要 */
+  overflow: visible; 
   padding-bottom: 120px;
 }
 
+/* 重新启用伪元素，但只加在 VPHero 里 */
 .VPHero::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 50% 30%,
-    rgba(100, 108, 255, 0.15) 0%,
-    rgba(100, 108, 255, 0.05) 40%,
-    transparent 90%
+  
+  /* 设置高度为 100% 甚至更多一点，配合渐变消失 */
+  height: 120%; 
+  
+  /* 关键修改：使用线性渐变 (linear-gradient) 从上到下。
+     顶部是淡蓝色，底部是透明。
+     这样背景结束时是“渐渐消失”的，不会有一条生硬的横线截断。
+  */
+  background: linear-gradient(
+    to bottom, 
+    rgba(116, 185, 255, 0.15) 0%,  /* 顶部：淡蓝 */
+    transparent 100%               /* 底部：完全透明，自然融合 */
   );
+  
   pointer-events: none;
   z-index: -1;
 }
 
+/* --- 4. 标题文字颜色 --- */
+.VPHero .name {
+
+  background: linear-gradient(120deg, #74b9ff 30%, #a6d4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  font-size: 76px !important;
+  /* 加一点同色系的微光，增加清晰度 */
+  text-shadow: 0 0 40px rgba(116, 185, 255, 0.35);
+}
+
+/* --- 5. 图片区域样式保持不变 --- */
 .VPHero .image-container {
   position: relative;
   width: 300px;
@@ -60,11 +83,13 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(116, 185, 255, 0.8));
+  /* 阴影也改成同色系 */
+  filter: drop-shadow(0 0 20px rgba(116, 185, 255, 0.6));
   position: relative;
   z-index: 2;
 }
 
+/* 图片背后的光球 */
 .VPHero .image-glow {
   content: '';
   position: absolute;
@@ -73,70 +98,56 @@ body {
   transform: translate(-50%, -50%);
   width: 280px;
   height: 280px;
+  
+  /* 简单的同色系光球 */
   background: radial-gradient(
     circle at center,
-    rgba(116, 185, 255, 0.3) 0%,
-    rgba(162, 155, 254, 0.2) 30%,
+    rgba(116, 185, 255, 0.4) 0%,
     transparent 70%
   );
-  filter: blur(20px);
+  
+  filter: blur(30px);
   z-index: 1;
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* --- 6. 动画定义 --- */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
-
-
 
 @keyframes pulse {
   0%, 100% {
-    transform: translate(-50%, -50%) scale(0.8);
-    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.1);
     opacity: 0.8;
   }
 }
 
-.VPHero .name {
-  background: linear-gradient(120deg, #74b9ff, #a29bfe);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 76px !important;
-  text-shadow: 0 0 30px rgba(116, 185, 255, 0.3);
-}
-
+/* --- 7. 移动端适配 --- */
 @media (max-width: 768px) {
   .VPHero .name {
     padding-top: 32px;
     font-size: 42px !important;
   }
-
   .VPHero .image-container {
     width: 120px;
     height: 120px;
   }
-
   .VPHero .image-glow {
     width: 180px;
     height: 180px;
   }
-
   .VPHero {
     padding-bottom: 80px;
   }
 }
 
-
+/* 页脚样式 */
 .VPFooter .message,
 .VPFooter .copyright {
   margin: 0;
@@ -145,15 +156,11 @@ body {
   font-weight: 500;
   color: var(--vp-c-text-2);
 }
-
 .VPFooter .copyright a {
   color: var(--vp-c-text-1);
   text-decoration: none;
   transition: color 0.25s;
 }
-
 .VPFooter .copyright a:hover {
   color: var(--vp-c-brand);
 }
-
-
