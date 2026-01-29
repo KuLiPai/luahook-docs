@@ -10,11 +10,10 @@ export default defineConfig({
 
 
   locales: {
-    // 默认语言：简体中文
     root: {
       label: '简体中文',
       lang: 'zh-CN',
-link: '/',
+      link: '/',
       title: 'LuaHook',
       description: 'LuaHook 官网',
       themeConfig: {
@@ -40,17 +39,39 @@ link: '/',
           {
             text: '手册',
             items: [
-              { text: 'Hook', link: '/manual/hook' },
-              { text: 'lpparam', link: '/manual/lpparam' },
-              { text: 'Field 字段', link: '/manual/field' },
-              { text: 'find/import 类', link: '/manual/import' },
-              { text: 'new/invoke 构造与函数', link: '/manual/invoke' },
-              { text: 'json', link: '/manual/json' },
-              { text: 'Task', link: '/manual/task' },
-              { text: 'file', link: '/manual/file' },
-              { text: 'http', link: '/manual/http' },
+              {
+                text: 'Java Hook',
+                items: [
+                  { text: 'hook', link: '/manual/hook' },
+                  { text: 'lpparam', link: '/manual/lpparam' },
+                  { text: 'field 字段', link: '/manual/field' },
+                  { text: 'find/import 类', link: '/manual/import' },
+                  { text: 'new/invoke 构造与函数', link: '/manual/invoke' },
+                ]
+              },
+              {
+                text: 'Native Hook',
+                items: [
 
-              { text: 'Luaj++', link: '/luaj++' },
+                  { text: '内存管理', link: '/manual/native/memory_alloc' },
+                  { text: '内存读写', link: '/manual/native/memory_io' },
+                  { text: '字符串操作', link: '/manual/native/memory_string' },
+                  { text: '指针操作', link: '/manual/native/pointer' },
+                  { text: '模块与符号', link: '/manual/native/module' },
+                  { text: 'Hook 接口', link: '/manual/native/hook' },
+                  { text: '兼容性说明', link: '/manual/native/legacy' },
+                ]
+              },
+              {
+                text: '其他',
+                items: [
+                  { text: 'json', link: '/manual/json' },
+                  { text: 'task', link: '/manual/task' },
+                  { text: 'file', link: '/manual/file' },
+                  { text: 'http', link: '/manual/http' },
+                  { text: 'Luaj++', link: '/luaj++' },
+                ],
+              },
             ],
           },
           {
@@ -66,7 +87,7 @@ link: '/',
             items: [
               { text: '关于', link: '/about/about' },
               { text: '常见问题', link: '/about/problem' },
-              { text: '源码导读', link: '/about/development' },
+              // { text: '源码导读', link: '/about/development' },
               { text: '致谢', link: '/about/thanks' },
               { text: 'Q&A', link: '/about/qna' },
               { text: '联系方式', link: '/about/contact' },
@@ -106,22 +127,63 @@ link: '/',
               { text: 'Introduction', link: '/en/introduction' },
               { text: 'Installation & Activation', link: '/en/activate' },
               { text: 'Your First Script', link: '/en/firstscript' },
+              { text: 'Packaging', link: '/en/packaged' }
             ],
           },
           {
             text: 'Manual',
             items: [
-              { text: 'Hook', link: '/en/manual/hook' },
-              { text: 'lpparam', link: '/en/manual/lpparam' },
-              { text: 'Field', link: '/en/manual/field' },
-              { text: 'find/import Class', link: '/en/manual/import' },
-              { text: 'new/invoke Constructor & Function', link: '/en/manual/invoke' },
-              { text: 'Luaj++', link: '/en/luaj++' },
+              {
+                text: 'Java Hook',
+                items: [
+                  { text: 'hook', link: '/en/manual/hook' },
+                  { text: 'lpparam', link: '/en/manual/lpparam' },
+                  { text: 'field', link: '/en/manual/field' },
+                  { text: 'find/import Class', link: '/en/manual/import' },
+                  { text: 'new/invoke', link: '/en/manual/invoke' },
+                ]
+              },
+              {
+                text: 'Native Hook',
+                items: [
+                  { text: 'Memory Management', link: '/en/manual/native/memory_alloc' },
+                  { text: 'Memory I/O', link: '/en/manual/native/memory_io' },
+                  { text: 'String Operations', link: '/en/manual/native/memory_string' },
+                  { text: 'Pointer Operations', link: '/en/manual/native/pointer' },
+                  { text: 'Modules & Symbols', link: '/en/manual/native/module' },
+                  { text: 'Hook Interface', link: '/en/manual/native/hook' },
+                  { text: 'Compatibility', link: '/en/manual/native/legacy' },
+                ]
+              },
+              {
+                text: 'Others',
+                items: [
+                  { text: 'json', link: '/en/manual/json' },
+                  { text: 'task', link: '/en/manual/task' },
+                  { text: 'file', link: '/en/manual/file' },
+                  { text: 'http', link: '/en/manual/http' },
+                  { text: 'Luaj++', link: '/en/luaj++' },
+                ],
+              },
+            ],
+          },
+          {
+            text: 'Examples',
+            items: [
+              { text: 'Monitor Volume Buttons', link: '/en/example/monitor-volume-buttons' },
+              { text: 'Inject SO File', link: '/en/example/inject-so-file' },
+              { text: 'Write Settings Page', link: '/en/example/write-setting' },
             ],
           },
           {
             text: 'About',
-            items: [],
+            items: [
+              { text: 'About', link: '/en/about/about' },
+              { text: 'FAQ', link: '/en/about/problem' },
+              { text: 'Thanks', link: '/en/about/thanks' },
+              { text: 'Q&A', link: '/en/about/qna' },
+              { text: 'Contact', link: '/en/about/contact' },
+            ],
           },
         ],
         socialLinks: [
@@ -135,5 +197,9 @@ link: '/',
       }
     }
   },
+
+  rewrites: {
+    'zh/:path*': ':path*'
+  }
 
 });
