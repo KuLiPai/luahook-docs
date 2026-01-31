@@ -59,6 +59,7 @@ export default defineConfig({
                   { text: '指针操作', link: '/manual/native/pointer' },
                   { text: '模块与符号', link: '/manual/native/module' },
                   { text: 'Hook 接口', link: '/manual/native/hook' },
+                  { text: '函数调用', link: '/manual/native/invoke' },
                   { text: '兼容性说明', link: '/manual/native/legacy' },
                 ]
               },
@@ -152,6 +153,7 @@ export default defineConfig({
                   { text: 'Pointer Operations', link: '/en/manual/native/pointer' },
                   { text: 'Modules & Symbols', link: '/en/manual/native/module' },
                   { text: 'Hook Interface', link: '/en/manual/native/hook' },
+                  { text: 'Function Invocation', link: '/en/manual/native/invoke' },
                   { text: 'Compatibility', link: '/en/manual/native/legacy' },
                 ]
               },
